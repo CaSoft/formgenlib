@@ -15,7 +15,7 @@
  * @email		info@frankmichel.com
  * 
  * @file		Form.php
- * @version		1.1.0
+ * @version		2.0.0
  * @date		11/25/2011
  * 
  * Copyright (c) 2009 Frank Michel
