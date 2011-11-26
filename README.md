@@ -1,11 +1,11 @@
 #Form Generation Library
 
-##Installation
-Please see installation instructions at:
-http://frankmichel.com/formgenlib/user_guide/installation/install.html
+##Usage
+Load the spark like this: $this->load->spark('formgenlib/2.0.0');
+Use the spark like this: $this->form->...
 
 ##User Guide
-The user guide is not yet completed. You can find what's there at:
+Please take a look at the user guide for detailed documentation:
 http://frankmichel.com/formgenlib/user_guide/
 
 ##Github Repository
