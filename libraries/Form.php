@@ -77,7 +77,7 @@ class El {
 	var $label_req_class = '';
 	var $label_req_flag = '';
 
-	var $group = '';					// status of the current group element (first or last)
+	var $group = '';					// status of the current group element (first, last or single)
 	
 	var $group_prefix = '';				// for checkgroup|radiogroup
 	var $group_suffix = '';
@@ -660,6 +660,7 @@ class El {
 		{
 			case 'first': return $this->group_prefix.$el;
 			case 'last': return $el.$this->group_suffix;
+			case 'single': return $this->group_prefix.$el.$this->group_suffix;
 			default: return $el;
 		}
 	}	
@@ -677,6 +678,7 @@ class El {
 		{
 			case 'first': return $this->group_prefix.$el;
 			case 'last': return $el.$this->group_suffix;
+			case 'single': return $this->group_prefix.$el.$this->group_suffix;
 			default: return $el;
 		}
 	}
@@ -1255,6 +1257,7 @@ class Form {
 		$label_pos = (isset($this->config['defaults']['label']['position'])) ? $this->config['defaults']['label']['position'] : 'before';
 		$label_pos = (isset($this->config['defaults']['checkgroup']['label']['position'])) ? $this->config['defaults']['checkgroup']['label']['position'] : $label_pos;
 
+		$checks_count = count($checks);
 		if ($label && $label_pos == 'before') $this->label($label, '', $atts, $rules);
 		foreach ($checks as $check)
 		{
@@ -1279,8 +1282,17 @@ class Form {
 			$info['label_text'] = $check[1];
 			$info['rules'] = $rules;
 			$info['group_label'] = $label;
-			if ($i == 1) $info['group'] = 'first';
-			if ($i == count($checks)) $info['group'] = 'last';
+			
+			if ($checks_count == 1) 
+			{
+				$info['group'] = 'single';
+			} 
+			else 
+			{
+				if ($i == 1) $info['group'] = 'first';
+				if ($i == $checks_count) $info['group'] = 'last';			
+			}
+			
 			$this->add($info);
 		}
 		if ($label && $label_pos == 'after') $this->label($label, '', $atts, $rules);
@@ -1301,7 +1313,8 @@ class Form {
 		
 		$label_pos = (isset($this->config['defaults']['label']['position'])) ? $this->config['defaults']['label']['position'] : 'before';
 		$label_pos = (isset($this->config['defaults']['radiogroup']['label']['position'])) ? $this->config['defaults']['radiogroup']['label']['position'] : $label_pos;
-		
+
+		$radios_count = count($radios);
 		if ($label && $label_pos == 'before') $this->label($label, '', $atts, $rules);
 		foreach ($radios as $radio)
 		{
@@ -1326,8 +1339,17 @@ class Form {
 			$info['label_text'] = $radio[1];
 			$info['rules'] = $rules;
 			$info['group_label'] = $label;
-			if ($i == 1) $info['group'] = 'first';
-			if ($i == count($radios)) $info['group'] = 'last';			
+			
+			if ($radios_count == 1) 
+			{
+				$info['group'] = 'single';
+			} 
+			else 
+			{
+				if ($i == 1) $info['group'] = 'first';
+				if ($i == $radios_count) $info['group'] = 'last';			
+			}
+
 			$this->add($info);
 		}
 		if ($label && $label_pos == 'after') $this->label($label, '', $atts, $rules);
