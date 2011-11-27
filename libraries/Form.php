@@ -591,8 +591,7 @@ class El {
 
 	function label() 
 	{
-		$el = $this->_make_label();
-		return $this->label_prefix.$el.$this->label_suffix;
+		return $this->_make_label();
 	}
 
 	function text() 
