@@ -2101,7 +2101,7 @@ class Form {
 				} 
 				else 
 				{
-					call_user_func_array($func['function'], array($func['values']));
+					call_user_func_array($item['function'], array($item['values']));
 				}
 			}
 		}
