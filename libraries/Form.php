@@ -102,6 +102,8 @@ class El {
 		'*' 		=> 'class|id|style|title|dir|lang|onclick|ondblclick|onmousedown|onmouseup|onmouseover|onmousemove|onmouseout|onkeypress|onkeydown|onkeyup|rel|data-value'
 	);
 
+	var $use_array = FALSE;
+
 	var $error;	// full error with open/close	
 	var $error_message; // error message only
 	
@@ -339,13 +341,15 @@ class El {
 				}
 			}
 			
-			// set checkbox, radio button and select names as arrays
-			// I don't think this is good. Users shuld be able to use arrays or not;
-			// $types = array('checkbox', 'radio', 'select');
-			// if (in_array($info['type'], $types)) 
-			// {
-			//	$info['name'] .= '[]';
-			// }
+			// set checkbox, radio button and select names as arrays, only if option 'use_array' is TRUE
+			if ($this->use_array) {
+echo 'entrei';
+				$types = array('checkbox', 'radio', 'select');
+				if (in_array($info['type'], $types)) 
+				{
+					$info['name'] .= '[]';
+				}
+			}
 		}
 		elseif ($info['type'] == 'image' || $info['type'] == 'submit' || $info['type'] == 'reset')
 		{

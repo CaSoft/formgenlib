@@ -156,6 +156,13 @@ $config['defaults'] = array(
 );
 
 /**
+ * Use array for some fields' name
+ * 
+ * The fields are: select, checkbox and radiobutton
+ */
+$config['use_array'] = TRUE;
+
+/**
  * Recaptcha Settings
  * 
  * Please provide your public and private key
