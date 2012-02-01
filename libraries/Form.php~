@@ -340,12 +340,11 @@ class El {
 			}
 			
 			// set checkbox, radio button and select names as arrays
-			// I don't think this is good. Users shuld be able to use arrays or not;
-			// $types = array('checkbox', 'radio', 'select');
-			// if (in_array($info['type'], $types)) 
-			// {
-			//	$info['name'] .= '[]';
-			// }
+			$types = array('checkbox', 'radio', 'select');
+			if (in_array($info['type'], $types)) 
+			{
+				$info['name'] .= '[]';
+			}
 		}
 		elseif ($info['type'] == 'image' || $info['type'] == 'submit' || $info['type'] == 'reset')
 		{
