@@ -890,7 +890,8 @@ class Form {
 		$config = $this->CI->config->item('form');
 		
 		// check if config file is associative or numeric
-		$is_indexed = (is_numeric(array_shift(array_keys($config)))) ? TRUE : FALSE;
+		$keys= array_keys($config);
+		$is_indexed = (is_numeric(array_shift($keys))) ? TRUE : FALSE;
 		
 		if ($init)	// no key provided
 		{
