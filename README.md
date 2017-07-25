@@ -17,3 +17,7 @@ If you found bugs or have code improvements please contact me directly at:
 info@frankmichel.com
 
 I hope you enjoy using this spark!
+
+
+Here is a link to the user guide docs, we had this in an old project was great at the time so thanks Frank.
+https://web.archive.org/web/20130112210659/http://frankmichel.de:80/formgenlib/user_guide/
